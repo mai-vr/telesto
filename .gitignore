@@ -1,0 +1,7 @@
+# Ignorar node_modules en cualquier subcarpeta (back y front)
+**/node_modules/
+
+# Ignorar archivos de entorno
+.env
+.env.*
+!.env.example
