@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #fcfcfc;
+    --seccondary-color: #cdcfd8;
+    --accent-color: #0373fa;
+
+    --text-font: 'Nunito', sans-serif;
+
+    font-size: clamp(16px, 1vmax, 24px);
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p,
+    a {
+        font-size: 1rem;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--text-font);
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Regular.ttf');
+    font-weight: 400;
+}
