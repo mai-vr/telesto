@@ -1,8 +1,6 @@
 import { ApplicationConfig, InjectionToken, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
 import { routes } from './app.routes';
 import { Auth, getAuth } from 'firebase/auth';
 

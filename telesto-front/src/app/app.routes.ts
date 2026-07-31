@@ -9,5 +9,9 @@ export const routes: Routes = [
     {
         path: 'login',
         loadChildren: () => import('./login/login.routes').then((m) => m.routes)
+    },
+    {
+        path: 'user',
+        loadChildren: () => import('./user-profile/user-profile.routes').then((m) => m.routes)
     }
 ];
