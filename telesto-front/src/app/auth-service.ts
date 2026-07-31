@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { signInWithPopup, signOut } from 'firebase/auth';
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { ActionCodeSettings, sendSignInLinkToEmail, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { FIREBASE_AUTH } from './app.config';
 
 @Injectable({
@@ -9,22 +9,20 @@ import { FIREBASE_AUTH } from './app.config';
 export class AuthService {
   auth = inject(FIREBASE_AUTH)
 
+
   async logInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    // provider.setCustomParameters({ prompt: 'select_account' });
 
     return signInWithPopup(this.auth, provider);
   }
 
-  async logInWithFacebook() {
-    const provider = new FacebookAuthProvider()
+  logInWithEmail(email: string) {
+    const actionCodeSettings: ActionCodeSettings = {
+      url: 'http://localhost:4200/user',
+      handleCodeInApp: true
+    }
 
-    return signInWithPopup(this.auth, provider)
-  }
-
-  async logInWithGitHub() {
-    const provider = new GithubAuthProvider()
-    return signInWithPopup(this.auth, provider)
+    return sendSignInLinkToEmail(this.auth, email, actionCodeSettings)
   }
 
   async logOut() {

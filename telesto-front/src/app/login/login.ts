@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { getAuth } from 'firebase/auth';
+import { getAuth, sendEmailVerification, sendSignInLinkToEmail } from 'firebase/auth';
 import { AuthService } from '../auth-service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
   selector: 'app-login',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -14,6 +16,7 @@ export class Login {
   private auth = getAuth()
   authService = inject(AuthService)
   private router = inject(Router)
+  userEmail = ''
 
   async loginGoogle() {
     try {
@@ -33,19 +36,10 @@ export class Login {
     }
   }
 
-  async loginFacebook() {
+  async loginEmail() {
     try {
-      await this.authService.logInWithFacebook()
-      this.router.navigate(['/user'])
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async loginGitHub() {
-    try {
-      await this.authService.logInWithGitHub()
-      this.router.navigate(['/user'])
+      await this.authService.logInWithEmail(this.userEmail)
+      localStorage.setItem('emailUserLogged', JSON.stringify(this.userEmail))
     } catch (error) {
       console.log(error)
     }
