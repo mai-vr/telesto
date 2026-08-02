@@ -9,6 +9,9 @@ import { FIREBASE_AUTH } from './app.config';
 export class AuthService {
   auth = inject(FIREBASE_AUTH)
 
+  isLoggedIn() {
+    return !!this.auth.currentUser
+  }
 
   async logInWithGoogle() {
     const provider = new GoogleAuthProvider();
