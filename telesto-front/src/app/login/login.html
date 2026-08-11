@@ -1,19 +1,37 @@
 <section class="login">
     <div class="welcome-text">
-        <h1>
-            Welcome to Telesto
-        </h1>
         <p>
-            Your personal diary in one place
+            We are happy to say
+        </p>
+        <h1>
+            Welcome
+        </h1>
+        <div class="welcome-telesto">
+            <p>
+                to
+            </p>
+            <h1>
+                Telesto
+            </h1>
+        </div>
+        <p>
+            Manage your schedule in one place
         </p>
     </div>
     <div class="login-form">
+        <div class="login-title">
+            <img src="/logoTelesto.png" alt="brand`s logo">
+            <h1>
+                Telesto
+            </h1>
+        </div>
         <form (ngSubmit)="loginEmail()">
             <input type="email" [(ngModel)]="userEmail" [ngModelOptions]="{standalone: true}">
             <button class="email-login-btn">
                 Log in
             </button>
         </form>
+        <hr>
         <button (click)="loginGoogle()" class="google-login-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 16 16">
                 <g fill="none" fill-rule="evenodd" clip-rule="evenodd">
