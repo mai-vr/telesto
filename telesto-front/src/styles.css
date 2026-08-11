@@ -2,7 +2,12 @@
 :root {
     --primary-color: #fcfcfc;
     --seccondary-color: #cdcfd8;
+    --secondary-color-soft: #e8eaf3;
     --accent-color: #0077d4;
+    --accent-color-seccondary: #01a36a;
+    --accent-color-seccondary-dark: #027e53;
+
+    --text-color: #292929;
 
     --text-font: 'Nunito', sans-serif;
 
@@ -21,7 +26,8 @@
     }
 
     p,
-    a {
+    a,
+    button {
         font-size: 1rem;
     }
 }
@@ -31,6 +37,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--text-font);
+    color: var(--text-color);
 }
 
 @font-face {

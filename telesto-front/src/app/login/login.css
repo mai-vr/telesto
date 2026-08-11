@@ -4,3 +4,125 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin: auto;
+}
+
+.welcome-title {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 3.75rem;
+    margin-bottom: -0.5rem;
+    color: var(--accent-color);
+}
+
+.welcome-telesto {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.welcome-brand-name {
+    font-size: 4.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 5rem;
+}
+
+.login-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 0 5rem; */
+}
+
+.logo-telesto {
+    width: 4rem;
+}
+
+.login-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.75rem;
+}
+
+.login-brand-name {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 2rem;
+}
+
+.email-login-label {
+    margin-bottom: 0.25rem;
+}
+
+.email-login-input {
+    padding: 0.75rem;
+    width: 80%;
+    border-radius: 2rem;
+    border: 1.5px solid var(--seccondary-color);
+    box-shadow: 7px 10px 13px -1px rgba(205, 207, 216, 0.51);
+}
+
+.email-login-btn {
+    width: 65%;
+    margin-top: 1.25rem;
+    padding: 0.45rem 0;
+    background-color: var(--accent-color-seccondary);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 2rem;
+    transition: all 0.2s;
+}
+
+.email-login-btn:hover {
+    cursor: pointer;
+    background-color: var(--accent-color-seccondary-dark);
+}
+
+hr {
+    width: 45%;
+    height: 1.5px;
+    background-color: var(--seccondary-color);
+}
+
+.google-login-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* font-size: 2rem; */
+    color: var(--text-color);
+    padding: 0.5rem;
+    width: 80%;
+    border-radius: 2rem;
+    border: 1.5px solid var(--seccondary-color);
+    box-shadow: 7px 10px 13px -1px rgba(205, 207, 216, 0.51);
+    background-color: transparent;
+    transition: all 0.2s;
+}
+
+.google-login-btn:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color-soft);
+}
+
+.google-login-svg {
+    width: 1.75rem;
+}
