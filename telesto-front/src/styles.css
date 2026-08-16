@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'material-icons/iconfont/material-icons.css';
+
 :root {
     --primary-color: #fcfcfc;
     --seccondary-color: #cdcfd8;
     --secondary-color-soft: #e8eaf3;
     --accent-color: #0077d4;
+    --accent-color-rgb: rgba(0, 120, 212, 0.55);
+
     --accent-color-seccondary: #01a36a;
     --accent-color-seccondary-dark: #027e53;
 

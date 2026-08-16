@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ActionCodeSettings, sendSignInLinkToEmail, signInWithPopup, signOut } from 'firebase/auth';
+import { ActionCodeSettings, onAuthStateChanged, sendSignInLinkToEmail, signInWithPopup, signOut } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FIREBASE_AUTH } from './app.config';
 
@@ -9,8 +9,12 @@ import { FIREBASE_AUTH } from './app.config';
 export class AuthService {
   auth = inject(FIREBASE_AUTH)
 
-  isLoggedIn() {
-    return !!this.auth.currentUser
+  isLoggedIn(): Promise<boolean> {
+    return new Promise((resolve) => {
+      onAuthStateChanged(this.auth, (user) => {
+        resolve(!!user);
+      });
+    });
   }
 
   async logInWithGoogle() {

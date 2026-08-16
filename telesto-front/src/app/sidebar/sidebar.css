@@ -1,0 +1,210 @@
+.layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 76px;
+    background: var(--primary-color);
+    box-shadow:
+        7px 10px 13px -1px rgba(205, 207, 216, 0.51);
+    overflow: hidden;
+    transition: width 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+    z-index: 100;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.sidebar.expanded {
+    width: 260px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 12%, transparent);
+    min-height: 5rem;
+    /* corte angular sutil, look "panel de HUD" */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sidebar-logo img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sidebar-logo h3 {
+    color: var(--text-color);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+}
+
+.sidebar-expand-btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    background: var(--accent-color-seccondary);
+    border: 1px solid var(--accent-color-seccondary-dark);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.sidebar-expand-btn button:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.06);
+}
+
+.sidebar-expand-btn button:active {
+    transform: scale(0.95);
+}
+
+.sidebar-expand-btn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.sidebar-expand-btn svg path {
+    fill: var(--primary-color) !important;
+}
+
+.sidebar.expanded .sidebar-expand-btn svg {
+    transform: rotate(180deg);
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 1rem 0.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.sidebar-menu-item {
+    position: relative;
+}
+
+.sidebar-menu-link {
+    margin-right: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: capitalize;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.sidebar-menu-link .material-icons {
+    flex-shrink: 0;
+    font-size: 1.4rem;
+    width: 20px;
+    line-height: 1;
+    text-align: center;
+    color: inherit;
+    transition: all 0.25s ease;
+}
+
+.sidebar-item-text {
+    color: inherit;
+    opacity: 0;
+    max-width: 0;
+    transition: all 0.2s ease;
+}
+
+.sidebar.expanded .sidebar-item-text {
+    opacity: 1;
+    max-width: 180px;
+}
+
+/* Hover — glow tipo HUD */
+.sidebar-menu-link:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.sidebar-menu-link:hover .material-icons {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent-color) 70%, transparent);
+}
+
+/* Barra indicadora izquierda en hover/activo */
+.sidebar-menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0%;
+    background: linear-gradient(180deg, var(--accent-color), var(--accent-color-seccondary));
+    border-radius: 0 3px 3px 0;
+    transition: height 0.25s ease;
+}
+
+.sidebar-menu-link:hover::before {
+    height: 65%;
+}
+
+/* Estado activo (agregar routerLinkActive="active" en el <a>) */
+.sidebar-menu-link.active {
+    background: color-mix(in srgb, var(--accent-color-seccondary) 16%, transparent);
+    color: var(--primary-color);
+}
+
+.sidebar-menu-link.active::before {
+    height: 70%;
+}
+
+.sidebar-menu-link.active .material-icons {
+    color: var(--accent-color-seccondary);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent-color-seccondary) 80%, transparent);
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--accent-color) 40%, transparent);
+    border-radius: 4px;
+}
