@@ -21,6 +21,11 @@ export const routes: Routes = [
         canActivate: [authGuardGuard]
     },
     {
+        path: 'calendar',
+        loadChildren: () => import('./calendar/calendar.routes').then((m) => m.routes),
+        canActivate: [authGuardGuard]
+    },
+    {
         path: '**',
         loadChildren: () => import('./not-found/not-found.routes').then((m) => m.routes)
     }
