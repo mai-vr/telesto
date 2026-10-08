@@ -1,0 +1,28 @@
+<section class="sidebar" [class.expanded]="expanded">
+    <div class="sidebar-container">
+        <div class="sidebar-header">
+            <a [routerLink]="" class="sidebar-logo">
+                <img src="/logoTelesto.png" alt="brands logo">
+                @if (expanded){
+                    <h3>
+                        Telesto
+                    </h3>
+                }
+            </a>
+            
+            <button (click)="toggle()" class="material-icons">
+                last_page
+            </button>
+            
+        </div>
+        @for (item of menuItems; track item.name) {
+            <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="sidebar-link">
+                <span class="material-icons">{{item.icon}}</span>
+                @if (expanded) {
+                    <span>{{item.name}}</span>
+                }
+            </a>
+        }
+    </div>
+    <ng-content></ng-content>
+</section>
