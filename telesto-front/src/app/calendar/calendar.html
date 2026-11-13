@@ -1,3 +1,57 @@
-<div class="calendar-wrapper">
-  <full-calendar [options]="calendarOptions"></full-calendar>
-</div>
+<section class="calendar-section">
+  <div class="calendar-wrapper">
+    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+  </div>
+
+  @if (showForm) {
+    <aside class="event-form">
+      <p class="event-date">Date: {{ selectedDate }}</p>
+
+      <form (ngSubmit)="saveEvent()">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          name="title"
+          placeholder="Title"
+          required
+          [(ngModel)]="eventData.title"
+        />
+
+        <div class="hours">
+          <div class="hour-field">
+            <label for="startAt">Start</label>
+            <input id="startAt" type="time" name="startAt" [(ngModel)]="startAtHour" required />
+          </div>
+          <div class="hour-field">
+            <label for="endAt">End</label>
+            <input id="endAt" type="time" name="endAt" [(ngModel)]="endAtHour" required />
+          </div>
+        </div>
+
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          type="text"
+          name="description"
+          placeholder="Description"
+          required
+          [(ngModel)]="eventData.description"
+        ></textarea>
+
+        <label for="state">State</label>
+        <select id="state" name="state" [(ngModel)]="eventData.state">
+          @for (s of states; track s) {
+            <option [value]="s">{{ s }}</option>
+          }
+        </select>
+
+        @if (errorMessage) {
+          <p class="form-error" role="alert">{{ errorMessage }}</p>
+        }
+
+        <button type="submit" class="save-btn">Save</button>
+      </form>
+    </aside>
+  }
+</section>

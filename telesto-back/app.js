@@ -13,12 +13,16 @@ const PORT = process.env.PORT
 let activities = []
 
 app.use(express.json())
+app.use(cors({
+    origin: "http://localhost:4200"
+}))
 
 // DEFINE VALID URLS TO ACCESS TO THIS API.
 
 app.use('/activities', authenticate, ActivityRouter)
 app.use(errorHandler)
 app.use(routeErrorHandler)
+
 
 app.listen(PORT, async () => {
     try {

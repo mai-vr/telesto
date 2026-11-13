@@ -1,0 +1,190 @@
+.calendar-section {
+  --calendar-text: #1f2330;
+  --calendar-radius: 0.75rem;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  /* height: 100vh; */
+  min-height: 100%;
+  padding: 1.5rem;
+  color: var(--calendar-text);
+}
+
+/* ---------- Calendario ---------- */
+.calendar-wrapper {
+  flex: 1;
+  min-width: 0; /* evita que el calendario desborde el flex */
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--seccondary-color);
+  border-radius: var(--calendar-radius);
+}
+
+/* Variables de FullCalendar (ver nota sobre ::ng-deep) */
+.calendar-wrapper ::ng-deep .fc {
+  --fc-page-bg-color: var(--primary-color);
+  --fc-border-color: var(--seccondary-color);
+  --fc-neutral-bg-color: var(--seccondary-color);
+  --fc-today-bg-color: rgba(0, 119, 212, 0.08);
+  --fc-button-bg-color: var(--accent-color);
+  --fc-button-border-color: var(--accent-color);
+  --fc-button-hover-bg-color: #005fa9;
+  --fc-button-hover-border-color: #005fa9;
+  --fc-button-active-bg-color: #004e8a;
+  --fc-button-active-border-color: #004e8a;
+  --fc-event-bg-color: var(--accent-color);
+  --fc-event-border-color: var(--accent-color);
+  --fc-event-text-color: var(--primary-color);
+
+  font-family: var(--text-font);
+}
+
+.calendar-wrapper ::ng-deep .fc-toolbar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.calendar-wrapper ::ng-deep .fc-button {
+  font-family: var(--text-font);
+  text-transform: capitalize;
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+.calendar-wrapper ::ng-deep .fc-button:focus {
+  box-shadow: none;
+}
+
+.calendar-wrapper ::ng-deep .fc-button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.calendar-wrapper ::ng-deep .fc-col-header-cell-cushion,
+.calendar-wrapper ::ng-deep .fc-daygrid-day-number {
+  color: var(--calendar-text);
+  text-decoration: none;
+}
+
+.calendar-wrapper ::ng-deep .fc-col-header-cell {
+  background-color: var(--seccondary-color);
+}
+
+.calendar-wrapper ::ng-deep .fc-daygrid-day {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-wrapper ::ng-deep .fc-daygrid-day:hover {
+  background-color: rgba(0, 119, 212, 0.06);
+}
+
+.calendar-wrapper ::ng-deep .fc-event {
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+/* ---------- Formulario ---------- */
+.event-form {
+  flex-shrink: 0;
+  width: 20rem;
+  padding: 1.25rem;
+  background-color: var(--primary-color);
+  border: 1px solid var(--seccondary-color);
+  border-radius: var(--calendar-radius);
+}
+
+.event-date {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--seccondary-color);
+}
+
+.event-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-form label {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.form-error {
+  margin: 0.25rem 0 0;
+  color: #b42318;
+  font-size: 0.875rem;
+}
+
+.event-form input,
+.event-form select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  color: var(--calendar-text);
+  background-color: var(--primary-color);
+  border: 1px solid var(--seccondary-color);
+  border-radius: 0.5rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.event-form input:focus,
+.event-form select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 119, 212, 0.2);
+}
+
+.hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.hour-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.save-btn {
+  margin-top: 0.75rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.save-btn:hover {
+  background-color: #005fa9;
+}
+
+.save-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .calendar-section {
+    flex-direction: column;
+  }
+
+  .calendar-wrapper,
+  .event-form {
+    width: 100%;
+  }
+}

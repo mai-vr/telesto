@@ -3,6 +3,8 @@ import { provideRouter } from '@angular/router';
 import { initializeApp } from "firebase/app";
 import { routes } from './app.routes';
 import { Auth, getAuth } from 'firebase/auth';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './services/auth-interceptor';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDRDf9VgcOZQLzGrImYgezhA7JfzrWlU24",
@@ -25,6 +27,7 @@ export const FIREBASE_AUTH = new InjectionToken<Auth>('FirebaseAuth', {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([authInterceptor]))
   ]
 };

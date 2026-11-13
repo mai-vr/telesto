@@ -4,3 +4,10 @@ export interface MenuItems {
     route: string
 }
 
+export interface IEvent {
+    title: string;
+    startAt: Date;
+    endAt: Date;
+    description: string;
+    state: string;
+}

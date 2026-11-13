@@ -1,6 +1,6 @@
 import { ERRORS } from '../services/errors.js'
 import { sendError } from '../services/helpers.js'
-import { db } from './firebase.js'
+import { db } from '../../firebase.js'
 
 const COLLECTION = 'activities'
 

@@ -134,3 +134,8 @@
     min-width: 0; /* evita que el contenido desborde el flex */
     overflow-y: auto;
 }
+
+.page-content {
+    width: 100%;
+    min-height: 100vh;
+}

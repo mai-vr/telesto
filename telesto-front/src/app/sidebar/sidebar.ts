@@ -13,7 +13,7 @@ export class Sidebar {
 
   menuItems: MenuItems[] = [
     {
-      icon: 'dashboard', name: 'dashboard', route: '/'
+      icon: 'dashboard', name: 'Dashboard', route: '/'
     },
     {
       icon: 'calendar_today', name: 'Schedule', route: '/calendar'
