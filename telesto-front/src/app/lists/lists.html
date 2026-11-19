@@ -1,0 +1,86 @@
+<section class="lists">
+  <div class="lists__header">
+    <h1 class="lists__title">Listas</h1>
+    <p class="lists__subtitle">Lo que quieras anotar hacelo acá.</p>
+    <div class="lists__actions">
+      <button class="lists__create" (click)="openCreateList()">Crear lista</button>
+    </div>
+  </div>
+  <div class="lists__content">
+    @if (loading) {
+      <p class="lists__loading">Loading...</p>
+    } @else if (!loading && errorLoadingApi) {
+      <p class="lists__error">No se pudo conectar a la API, no hay listas.</p>
+    } @else if (listsArray.length === 0) {
+      <p class="lists__result">No hay listas.</p>
+    } @else {
+      @for (list of listsArray; track list.id) {
+        <div class="list__card">
+          <div class="list__header">
+            <p class="list__category">{{ list.category }}</p>
+            <h2 class="list__title">{{ list.title }}</h2>
+          </div>
+          <p class="list__subtitle">{{ list.description }}</p>
+          <div class="list__items">
+            <ul class="list__items__ul">
+              @for (item of list.items; track item.id) {
+                <li class="list__items__i">
+                  {{ item.title }}
+                  <span>{{ item.score }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    }
+  </div>
+  @if (createList) {
+    <div class="list__create__dialog">
+      <div class="list__create__header">
+        <h2 class="list__create__header__title">Nueva lista</h2>
+        <button type="button" (click)="closeCreateList()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+            <path
+              fill="#000000"
+              d="M6.225 4.811a1 1 0 0 0-1.414 1.414L10.586 12L4.81 17.775a1 1 0 1 0 1.414 1.414L12 13.414l5.775 5.775a1 1 0 0 0 1.414-1.414L13.414 12l5.775-5.775a1 1 0 0 0-1.414-1.414L12 10.586z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="list__create__content">
+        <form class="list__create__form">
+          <label for="title" class="list__create__label">Titulo</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="list__create__input"
+            placeholder="Nombre de la lista"
+          />
+          <label for="description" class="list__create__label"></label>
+          <textarea
+            name="description"
+            id="description"
+            class="list__create__textarea"
+            placeholder="Descripción de la lista"
+          ></textarea>
+          <label for="category">Categoría</label>
+          <input
+            type="text"
+            id="category"
+            name="category"
+            class="list__create__input"
+            placeholder="Escribir una categoría"
+          />
+          <div class="list__create__actions">
+            <button type="button" class="list__create__btn btn__cancel" (click)="closeCreateList()">
+              Cancelar
+            </button>
+            <button type="submit" class="list__create__btn btn__create">Crear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</section>

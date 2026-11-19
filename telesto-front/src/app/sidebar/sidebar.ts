@@ -9,24 +9,32 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
-  expanded = false
+  expanded = false;
 
   menuItems: MenuItems[] = [
     {
-      icon: 'dashboard', name: 'Dashboard', route: '/'
+      icon: 'dashboard',
+      name: 'Dashboard',
+      route: '/',
     },
     {
-      icon: 'calendar_today', name: 'Schedule', route: '/calendar'
+      icon: 'calendar_today',
+      name: 'Schedule',
+      route: '/calendar',
     },
     {
-      icon: 'list_alt', name: 'Lists', route: '/'
+      icon: 'list_alt',
+      name: 'Lists',
+      route: '/lists',
     },
     {
-      icon: 'sentiment_satisfied_alt', name: 'Profile', route: '/user'
-    }
-  ]
+      icon: 'sentiment_satisfied_alt',
+      name: 'Profile',
+      route: '/user',
+    },
+  ];
 
   toggle() {
-    this.expanded = !this.expanded
+    this.expanded = !this.expanded;
   }
 }
