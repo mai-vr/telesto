@@ -7,6 +7,7 @@ import { ActivityRouter } from "./src/routes/activitiesRouter.js";
 import { errorHandler } from "./src/middleware/errorHandler.js";
 import { routeErrorHandler } from "./src/middleware/routeErrorHandler.js";
 import { ListRouter } from "./src/routes/listsRouter.js";
+import { CategoryRouter } from "./src/routes/categoriesRouter.js";
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,7 @@ app.use(
 
 app.use("/activities", authenticate, ActivityRouter);
 app.use("/lists", authenticate, ListRouter);
+app.use("/categories", authenticate, CategoryRouter);
 app.use(errorHandler);
 app.use(routeErrorHandler);
 
